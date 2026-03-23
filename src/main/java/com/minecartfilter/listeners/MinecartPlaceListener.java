@@ -51,18 +51,18 @@ public class MinecartPlaceListener implements Listener {
         Location loc = minecart.getLocation();
         Block railBlock = loc.getBlock();
 
-        // Try to find nearby rail if standing slightly above it
+        
         if (!RailScanner.isRail(railBlock)) {
             railBlock = loc.clone().subtract(0, 1, 0).getBlock();
         }
 
         if (!RailScanner.isRail(railBlock)) {
-            return; // Not on a rail, no restriction needed
+            return; 
         }
 
         PluginConfig cfg = plugin.getPluginConfig2();
 
-        // Check chunk limit first (faster)
+        
         int chunkCount = RailScanner.countMinecartsInChunk(railBlock);
         if (chunkCount >= cfg.getMaxPerChunk()) {
             event.setCancelled(true);
@@ -70,7 +70,7 @@ public class MinecartPlaceListener implements Listener {
                 plugin.getLogger().info("Blocked minecart spawn at " + loc
                         + " — chunk limit reached (" + chunkCount + "/" + cfg.getMaxPerChunk() + ")");
             }
-            // Notify nearby players (the one who placed it)
+            
             loc.getWorld().getNearbyEntities(loc, 3, 3, 3).stream()
                     .filter(e -> e instanceof Player)
                     .map(e -> (Player) e)
@@ -82,7 +82,7 @@ public class MinecartPlaceListener implements Listener {
             return;
         }
 
-        // Check rail network limit
+        
         int railCount = RailScanner.countMinecartsonConnectedRail(railBlock);
         if (railCount >= cfg.getMaxPerRail()) {
             event.setCancelled(true);
