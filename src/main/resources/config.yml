@@ -1,0 +1,16 @@
+# MinecartFilter Configuration
+
+# Maximum number of minecarts allowed on the same connected rail segment
+max-minecarts-per-rail: 10
+
+# Maximum number of minecarts allowed within a single chunk
+max-minecarts-per-chunk: 20
+
+# Message sent to player when rail limit is reached
+message-rail-limit: "&cToo many minecarts on this rail! Maximum is {limit}."
+
+# Message sent to player when chunk limit is reached
+message-chunk-limit: "&cToo many minecarts in this chunk! Maximum is {limit}."
+
+# Whether to log limit violations to console
+log-violations: false

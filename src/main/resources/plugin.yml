@@ -1,0 +1,20 @@
+name: MinecartFilter
+version: 1.0.0
+main: com.minecartfilter.MinecartFilterPlugin
+api-version: 1.20
+description: Limits minecarts per rail segment and per chunk
+author: MinecartFilter
+
+commands:
+  minecartfilter:
+    description: MinecartFilter admin commands
+    usage: /minecartfilter reload
+    permission: minecartfilter.admin
+
+permissions:
+  minecartfilter.admin:
+    description: Access to MinecartFilter admin commands
+    default: op
+  minecartfilter.bypass:
+    description: Bypass minecart placement limits
+    default: false
